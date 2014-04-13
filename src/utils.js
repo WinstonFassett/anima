@@ -2,8 +2,8 @@
  * Vendor specific stuff
  */
 
-var requestAnimationFrame = top.requestAnimationFrame,
-    cancelAnimationFrame = top.cancelAnimationFrame,
+var requestAnimationFrame = window.requestAnimationFrame,
+    cancelAnimationFrame = window.cancelAnimationFrame,
     vendors = ['moz', 'webkit', 'ms']
 
 for (var i = 0; i < vendors.length && !requestAnimationFrame; i++) {
@@ -22,7 +22,7 @@ function getProperty(name) {
 	return prefix ? prefix + name : name
 }
 
-var performance = top.performance && top.performance.now ? top.performance : Date
+var performance = window.performance && window.performance.now ? window.performance : Date
 
 requestAnimationFrame(function(tick) {
 	fixTick = tick > 1e12 != performance.now() > 1e12
